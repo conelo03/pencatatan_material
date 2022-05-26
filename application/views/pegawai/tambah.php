@@ -95,6 +95,12 @@
                       Pegawai
                     </label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="akses" value="teknisi" id="exampleRadios4" <?= set_value('akses') == 'pegawai' ? 'checked' : '' ; ?> >
+                    <label class="form-check-label" for="exampleRadios4">
+                      Teknisi
+                    </label>
+                  </div>
                 </div>
                 <?= form_error('akses', '<span class="text-danger small">', '</span>'); ?>
               </div>

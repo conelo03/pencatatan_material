@@ -28,6 +28,20 @@ function is_pegawai()
     return $status;
 }
 
+function is_teknisi()
+{
+    $ci = get_instance();
+    $role = $ci->session->userdata('akses');
+
+    $status = true;
+
+    if ($role != 'teknisi') {
+        $status = false;
+    }
+
+    return $status;
+}
+
 function set_pesan($pesan, $tipe = true)
 {
     $ci = get_instance();

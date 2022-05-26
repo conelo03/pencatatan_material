@@ -88,3 +88,9 @@ $route['tambah-barang-keluar']			= 'Item/tambah_barang_keluar';
 $route['detail-barang-keluar/(:any)']			= 'Item/detail_barang_keluar/$1';
 $route['edit-barang-keluar/(:any)']			= 'Item/edit_barang_keluar/$1';
 $route['hapus-barang-keluar/(:any)/(:any)']			= 'Item/hapus_barang_keluar/$1/$2';
+
+$route['maintenance-hardware'] 				    = 'Maintenance';
+$route['tambah-maintenance-hardware'] 	        = 'Maintenance/tambah';
+$route['edit-maintenance-hardware/(:any)'] 	    = 'Maintenance/edit/$1';
+$route['hapus-maintenance-hardware/(:any)']    	= 'Maintenance/hapus/$1';
+$route['repair-maintenance-hardware/(:any)'] 		= 'Maintenance/repair/$1';
