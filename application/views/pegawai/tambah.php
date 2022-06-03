@@ -90,6 +90,12 @@
                     </label>
                   </div>
                   <div class="form-check">
+                    <input class="form-check-input" type="radio" name="akses" value="manager" id="exampleRadios4" <?= set_value('akses') == 'manager' ? 'checked' : '' ; ?> >
+                    <label class="form-check-label" for="exampleRadios4">
+                      Manager
+                    </label>
+                  </div>
+                  <div class="form-check">
                     <input class="form-check-input" type="radio" name="akses" value="pegawai" id="exampleRadios4" <?= set_value('akses') == 'pegawai' ? 'checked' : '' ; ?> >
                     <label class="form-check-label" for="exampleRadios4">
                       Pegawai

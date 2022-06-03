@@ -24,24 +24,24 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
         </ul>
       </nav>
 
-      <div class="main-sidebar">
+      <div class="main-sidebar bg-primary">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="#">MATERIAL</a>
+            <a href="#" class="text-white">MATERIAL</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="#">MTRL</a>
+            <a href="#" class="text-white">MTRL</a>
           </div>
           <?php
             $judul = explode(' ', $title);
           ?>
           <ul class="sidebar-menu">
-            <li class="menu-header">Menu</li>
+            <li class="menu-header text-white">Menu</li>
             <li class="<?= $title == 'Dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('dashboard');?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>  
 
             <li class="<?= $title == 'Profil Pribadi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('profile');?>"><i class="fas fa-user"></i> <span>Profil Pribadi</span></a></li> 
 
-            <?php if(!is_teknisi()):?>  
+            <?php if(!is_teknisi() && !is_manager()):?>  
             <li class="menu-header">Data Master</li>
             <?php if(is_admin()):?>        
             <li class="<?= $title == 'Data Pegawai' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pegawai');?>"><i class="fas fa-users"></i> <span>Data Pegawai</span></a></li> 
@@ -56,7 +56,13 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             <li class="<?= $title == 'Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-keluar');?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li>
             <?php endif;?>
             <li class="<?= $title == 'Maintenance Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('maintenance-hardware');?>"><i class="fas fa-wrench"></i> <span>Maintenance Hardware</span></a></li> 
-
+            
+            <?php if(!is_teknisi() && !is_manager()):?> 
+            <li class="menu-header">Laporan</li>
+            <li class="<?= $title == 'Laporan Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-masuk');?>"><i class="fas fa-file"></i> <span>Laporan Barang Masuk</span></a></li> 
+            <li class="<?= $title == 'Laporan Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-keluar');?>"><i class="fas fa-file"></i> <span>Laporan Barang Keluar</span></a></li>
+            <li class="<?= $title == 'Laporan Maintenance Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-maintenance-hardware');?>"><i class="fas fa-file"></i> <span>Laporan Maintenance Hardware</span></a></li>
+            <?php endif;?>
           </ul>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

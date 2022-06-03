@@ -42,6 +42,20 @@ function is_teknisi()
     return $status;
 }
 
+function is_manager()
+{
+    $ci = get_instance();
+    $role = $ci->session->userdata('akses');
+
+    $status = true;
+
+    if ($role != 'manager') {
+        $status = false;
+    }
+
+    return $status;
+}
+
 function set_pesan($pesan, $tipe = true)
 {
     $ci = get_instance();

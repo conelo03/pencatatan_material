@@ -94,3 +94,10 @@ $route['tambah-maintenance-hardware'] 	        = 'Maintenance/tambah';
 $route['edit-maintenance-hardware/(:any)'] 	    = 'Maintenance/edit/$1';
 $route['hapus-maintenance-hardware/(:any)']    	= 'Maintenance/hapus/$1';
 $route['repair-maintenance-hardware/(:any)'] 		= 'Maintenance/repair/$1';
+
+$route['laporan-barang-masuk']					= 'Laporan/barang_masuk';
+$route['laporan-barang-keluar']					= 'Laporan/barang_keluar';
+$route['laporan-maintenance-hardware'] 				    = 'Laporan/maintenance';
+$route['cetak-barang-masuk']					= 'Laporan/cetak_barang_masuk';
+$route['cetak-barang-keluar']					= 'Laporan/cetak_barang_keluar';
+$route['cetak-maintenance-hardware'] 				    = 'Laporan/cetak_maintenance';

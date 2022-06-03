@@ -12,6 +12,32 @@
       </h6>
 
     </div>
+    <?php if(!is_teknisi() && !is_manager()):?>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Grafik Barang Masuk tahun 2022</h4>
+          </div>
+          <div class="card-body">
+            <canvas id="barChart" height="158"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Grafik Barang Keluar tahun 2022</h4>
+          </div>
+          <div class="card-body">
+            <canvas id="keluarChart" height="158"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php endif;?>
   </section>
   
 </div>
