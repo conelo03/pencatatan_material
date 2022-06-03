@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2022 at 12:33 PM
+-- Generation Time: Jun 03, 2022 at 10:20 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.2.33
 
@@ -134,7 +134,8 @@ CREATE TABLE `tb_maintenance` (
 --
 
 INSERT INTO `tb_maintenance` (`id_maintenance`, `id_item`, `kode_item`, `tanggal`, `keterangan`, `id_pegawai`, `status`) VALUES
-(2, 1, 'tes123', '2022-05-26 19:26:10', 'rusak parah', 4, 1);
+(2, 1, 'tes123', '2022-05-26 19:26:10', 'rusak parah', 4, 1),
+(3, 1, 'tes123', '2022-06-03 17:16:02', 'tes', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -163,7 +164,8 @@ CREATE TABLE `tb_pegawai` (
 INSERT INTO `tb_pegawai` (`id_pegawai`, `nip`, `nama`, `jabatan`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `foto`, `username`, `password`, `akses`) VALUES
 (1, '12345', 'admin', 'Administrator', 'subang', '2022-03-01', 'Laki-laki', 'user.png', 'admin', '$2y$10$5VifqomOAsoe39zJDc/GJefzvAwOmvdqMbDeNjocX0piQd5KDOKbS', 'admin'),
 (4, 'tess', 'tess', 'tess', 'tess', '2022-12-31', 'Laki-laki', 'pemandangan-alam-matahari.jpg', 'pegawai', '$2y$10$UnNPKGc./ULEyCbaojSuxe87EI30/muH1yCXfCbB41iQIl08R0AQ.', 'pegawai'),
-(5, '12341', 'Teknisi', 'Teknisi', 'Bandung', '2022-12-31', 'Perempuan', '2019-09-04.jpg', 'teknisi', '$2y$10$iSZS7AfmWmjJkSyGE.9kAeiQJetVuWkx3lLQByvLI1umgDOLQsCNK', 'teknisi');
+(5, '12341', 'Teknisi', 'Teknisi', 'Bandung', '2022-12-31', 'Perempuan', '2019-09-04.jpg', 'teknisi', '$2y$10$iSZS7AfmWmjJkSyGE.9kAeiQJetVuWkx3lLQByvLI1umgDOLQsCNK', 'teknisi'),
+(6, '1234', 'Manager', 'Manager', 'Jakarta', '2022-12-31', 'Laki-laki', 'aj_(2).jpeg', 'manager', '$2y$10$n5DPtIIkHXkW4HEH/IyJkuYs6/GRq0UxoBE6mzvNWR7EpfDy5NFWa', 'manager');
 
 --
 -- Indexes for dumped tables
@@ -237,13 +239,13 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_maintenance`
 --
 ALTER TABLE `tb_maintenance`
-  MODIFY `id_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_maintenance` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_pegawai`
 --
 ALTER TABLE `tb_pegawai`
-  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
