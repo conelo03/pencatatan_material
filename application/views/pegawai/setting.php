@@ -23,7 +23,7 @@
               <div class="card-body">
                 <div class="form-group">
                   <label>NIP</label>
-                  <input type="text" name="nip" class="form-control" value="<?= set_value('nip', $pegawai['nip']); ?>" disabled>
+                  <input type="text" name="nip" class="form-control" value="<?= set_value('nip', $pegawai['nip']); ?>" required>
                   <?= form_error('nip', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="form-group">

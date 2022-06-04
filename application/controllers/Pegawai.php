@@ -192,6 +192,7 @@ class Pegawai extends CI_Controller {
 			if(!empty($data['password'])){
 				$data_user	= [
 					'id_pegawai'		=> $id_pegawai,
+					'nip'			=> $data['nip'],
 					'nama'			=> $data['nama'],
 					'username'		=> $data['username'],
 					'password'		=> password_hash($data['password'], PASSWORD_DEFAULT),
@@ -204,6 +205,7 @@ class Pegawai extends CI_Controller {
 			} else {
 				$data_user	= [
 					'id_pegawai'		=> $id_pegawai,
+					'nip'			=> $data['nip'],
 					'nama'			=> $data['nama'],
 					'username'		=> $data['username'],
 					'jabatan'			=> $data['jabatan'],
