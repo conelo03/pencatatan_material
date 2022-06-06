@@ -15,11 +15,11 @@ class Item extends CI_Controller {
 		$this->load->library('upload');
 	}
 
-	// Data Item
+	// Data Barang
 
 	public function index()
 	{
-        $data['title']		= 'Data Item';
+        $data['title']		= 'Data Barang';
 		$data['item']		= $this->M_item->get_data()->result_array();
 		$this->load->view('item/data', $data);
 	}
@@ -28,7 +28,7 @@ class Item extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Item';
+			$data['title']		= 'Data Barang';
 			$data['kategori']	= $this->M_kategori->get_data()->result_array();
 			$this->load->view('item/tambah', $data);
 		} else {
@@ -54,7 +54,7 @@ class Item extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Item';
+			$data['title']		= 'Data Barang';
 			$data['item']	= $this->M_item->get_by_id($id_item);
 			$data['kategori']	= $this->M_kategori->get_data()->result_array();
 			$this->load->view('item/edit', $data);
@@ -98,7 +98,7 @@ class Item extends CI_Controller {
 
 	public function barcode($kode_item)
 	{
-		$data['title']		= 'Data Item';
+		$data['title']		= 'Data Barang';
 		$data['kode_item']	= $kode_item;
 		$this->load->view('item/barcode', $data);
 	}

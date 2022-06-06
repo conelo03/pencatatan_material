@@ -23,7 +23,7 @@
               <div class="row">
                 <div class="col-4"></div>
                 <div class="col-2 text-left">
-                  <h6>Nama Item</h6>
+                  <h6>Nama Barang</h6>
                   <h6>Kategori</h6>
                   <h6>Stock</h6>
                   <h6>Keterangan</h6>

@@ -101,3 +101,9 @@ $route['laporan-maintenance-hardware'] 				    = 'Laporan/maintenance';
 $route['cetak-barang-masuk']					= 'Laporan/cetak_barang_masuk';
 $route['cetak-barang-keluar']					= 'Laporan/cetak_barang_keluar';
 $route['cetak-maintenance-hardware'] 				    = 'Laporan/cetak_maintenance';
+
+$route['permintaan-barang'] 				    = 'Permintaan_barang';
+$route['tambah-permintaan-barang'] 	        = 'Permintaan_barang/tambah';
+$route['edit-permintaan-barang/(:any)'] 	    = 'Permintaan_barang/edit/$1';
+$route['hapus-permintaan-barang/(:any)']    	= 'Permintaan_barang/hapus/$1';
+$route['verifikasi-permintaan-barang/(:any)'] 		= 'Permintaan_barang/verifikasi/$1';

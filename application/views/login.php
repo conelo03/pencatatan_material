@@ -25,7 +25,7 @@
             <div class="login-brand mb-4">
               <img src="<?= base_url(); ?>assets/img/stisla-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle mb-2">
               <h2 style="color: #006400;">Aplikasi</h2>
-              <h6 style="color: #DAA520;">Pencatatan Material</h6>
+              <h6 style="color: #DAA520;">SI MONITORING BARANG</h6>
             </div>
 
             <div class="card card-primary">

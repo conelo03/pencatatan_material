@@ -56,6 +56,34 @@ function is_manager()
     return $status;
 }
 
+function is_keuangan()
+{
+    $ci = get_instance();
+    $role = $ci->session->userdata('akses');
+
+    $status = true;
+
+    if ($role != 'keuangan') {
+        $status = false;
+    }
+
+    return $status;
+}
+
+function is_pelkap()
+{
+    $ci = get_instance();
+    $role = $ci->session->userdata('akses');
+
+    $status = true;
+
+    if ($role != 'pelkap') {
+        $status = false;
+    }
+
+    return $status;
+}
+
 function set_pesan($pesan, $tipe = true)
 {
     $ci = get_instance();

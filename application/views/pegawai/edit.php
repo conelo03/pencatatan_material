@@ -108,6 +108,18 @@
                       Teknisi
                     </label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="akses" value="keuangan" id="exampleRadios4" <?= set_value('akses', $pegawai['akses']) == 'keuangan' ? 'checked' : '' ; ?> >
+                    <label class="form-check-label" for="exampleRadios4">
+                      Divisi Keuangan
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="akses" value="pelkap" id="exampleRadios4" <?= set_value('akses', $pegawai['akses']) == 'pelkap' ? 'checked' : '' ; ?> >
+                    <label class="form-check-label" for="exampleRadios4">
+                      Divisi Pelkap
+                    </label>
+                  </div>
                 </div>
                 <?= form_error('akses', '<span class="text-danger small">', '</span>'); ?>
               </div>

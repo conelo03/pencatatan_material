@@ -27,10 +27,10 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
       <div class="main-sidebar bg-primary">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="#" class="text-white">MATERIAL</a>
+            <a href="#" class="text-white">SI MONITORING BARANG</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="#" class="text-white">MTRL</a>
+            <a href="#" class="text-white">SIMB</a>
           </div>
           <?php
             $judul = explode(' ', $title);
@@ -41,20 +41,28 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
 
             <li class="<?= $title == 'Profil Pribadi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('profile');?>"><i class="fas fa-user"></i> <span>Profil Pribadi</span></a></li> 
 
-            <?php if(!is_teknisi() && !is_manager()):?>  
+            <?php if(is_admin() || is_pegawai()):?>
             <li class="menu-header">Data Master</li>
             <?php if(is_admin()):?>        
             <li class="<?= $title == 'Data Pegawai' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pegawai');?>"><i class="fas fa-users"></i> <span>Data Pegawai</span></a></li> 
             <?php endif;?>
             <li class="<?= $title == 'Data Kategori' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('kategori');?>"><i class="fas fa-list"></i> <span>Data Kategori</span></a></li> 
-            <li class="<?= $title == 'Data Item' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('item');?>"><i class="fas fa-th-large"></i> <span>Data Item</span></a></li> 
+            <li class="<?= $title == 'Data Barang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('item');?>"><i class="fas fa-th-large"></i> <span>Data Barang</span></a></li> 
             <?php endif;?>
-            <li class="menu-header">Transaksi</li>
             
-            <?php if(!is_teknisi()):?>  
+            <?php if(is_admin() || is_keuangan() || is_pegawai()):?>
+            <li class="menu-header">Permintaan Barang</li>
+            <li class="<?= $title == 'Permintaan Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('permintaan-barang');?>"><i class="fas fa-clipboard-list"></i> <span>Permintaan Barang</span></a></li>
+            <?php endif;?> 
+
+            <?php if(!is_teknisi()):?>
+            <li class="menu-header">Input & Output Barang</li>
+              
             <li class="<?= $title == 'Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-masuk');?>"><i class="fas fa-download"></i> <span>Barang Masuk</span></a></li> 
             <li class="<?= $title == 'Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-keluar');?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li>
             <?php endif;?>
+
+            <li class="menu-header">Maintenance Barang</li>
             <li class="<?= $title == 'Maintenance Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('maintenance-hardware');?>"><i class="fas fa-wrench"></i> <span>Maintenance Hardware</span></a></li> 
             
             <?php if(!is_teknisi() && !is_manager()):?> 

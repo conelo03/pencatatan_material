@@ -6,7 +6,7 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Item</a></div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Barang</a></div>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Data Item</h4>
+              <h4>Data Barang</h4>
               <div class="card-header-action">
                 <a href="<?= base_url('tambah-item');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
               </div>
@@ -26,8 +26,8 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
-                      <th>Kode Item</th>
-                      <th>Nama Item</th>
+                      <th>Kode Barang</th>
+                      <th>Nama Barang</th>
                       <th>Lokasi</th>
                       <th>Stock</th>
                       <th class="text-center" style="width: 250px;">Aksi</th>

@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label>Nama Item</label>
+                  <label>Nama Barang</label>
                   <input type="hidden" name="id_item" class="form-control disabled" id="id_item" value="<?= $bm['id_item'] ?>">
                   <input type="text" name="nama_item" class="form-control disabled" id="nama_item" value="<?= set_value('nama_item', $item['nama_item']); ?>" required="" disabled>
                   <?= form_error('nama_item', '<span class="text-danger small">', '</span>'); ?>

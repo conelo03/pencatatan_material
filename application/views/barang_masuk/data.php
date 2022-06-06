@@ -17,7 +17,7 @@
             <div class="card-header">
               <h4>Data Barang Masuk</h4>
               <div class="card-header-action">
-                <?php if(!is_manager()):?> 
+                <?php if(is_pegawai()):?> 
                 <a href="<?= base_url('tambah-barang-masuk');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                 <?php endif;?>
               </div>
@@ -48,7 +48,7 @@
                       <td><?= $u['jumlah'];?></td>
                       <td class="text-center">
                         <a href="<?= base_url('detail-barang-masuk/'.$u['id_barang_masuk']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
-                        <?php if(!is_manager()):?> 
+                        <?php if(is_pegawai()):?> 
                         <a href="<?= base_url('edit-barang-masuk/'.$u['id_barang_masuk']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
                         <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-barang-masuk/'.$u['id_barang_masuk'].'/'.$u['id_item']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                         <?php endif;?>

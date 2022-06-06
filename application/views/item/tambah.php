@@ -6,8 +6,8 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Item</a></div>
-        <div class="breadcrumb-item">Tambah Item</div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Barang</a></div>
+        <div class="breadcrumb-item">Tambah Barang</div>
       </div>
     </div>
 
@@ -17,16 +17,16 @@
           <div class="card">
             <form action="<?= base_url('tambah-item'); ?>" method="post" enctype="multipart/form-data">
               <div class="card-header">
-                <h4>Form Tambah Item</h4>
+                <h4>Form Tambah Barang</h4>
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <label>Kode Item</label>
+                  <label>Kode Barang</label>
                   <input type="text" name="kode_item" class="form-control" value="<?= set_value('kode_item'); ?>" required="">
                   <?= form_error('kode_item', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="form-group">
-                  <label>Nama Item</label>
+                  <label>Nama Barang</label>
                   <input type="text" name="nama_item" class="form-control" value="<?= set_value('nama_item'); ?>" required="">
                   <?= form_error('nama_item', '<span class="text-danger small">', '</span>'); ?>
                 </div>

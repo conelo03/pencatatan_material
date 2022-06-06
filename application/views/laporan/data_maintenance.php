@@ -16,11 +16,11 @@
           <div class="card">
             <div class="card-header">
               <h4>Laporan Maintenance Hardware</h4>
-              <?php if (is_pegawai()) { ?>
-                <div class="card-header-action">
-                  <a href="<?= base_url('cetak-maintenance');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
-                </div>
-              <?php } ?>
+              <div class="card-header-action">
+                <?php if(is_pegawai() || is_manager()):?>
+                <a href="<?= base_url('cetak-maintenance-hardware');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
+                <?php endif;?>
+              </div>
               
             </div>
             <div class="card-body">
