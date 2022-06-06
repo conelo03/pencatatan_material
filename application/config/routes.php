@@ -72,22 +72,26 @@ $route['edit-kategori/(:any)'] 	    = 'Kategori/edit/$1';
 $route['hapus-kategori/(:any)']    	= 'Kategori/hapus/$1';
 
 $route['item'] 				    = 'Item';
+$route['stock-item'] 				    = 'Item/stock';
 $route['tambah-item'] 	        = 'Item/tambah';
 $route['edit-item/(:any)'] 	    = 'Item/edit/$1';
 $route['hapus-item/(:any)']    	= 'Item/hapus/$1';
 $route['barcode/(:any)'] 		= 'Item/barcode/$1';
+$route['barcode-stock/(:any)'] 		= 'Item/barcode_stock/$1';
 
 $route['barang-masuk']					= 'Item/barang_masuk';
 $route['tambah-barang-masuk']			= 'Item/tambah_barang_masuk';
 $route['detail-barang-masuk/(:any)']			= 'Item/detail_barang_masuk/$1';
 $route['edit-barang-masuk/(:any)']			= 'Item/edit_barang_masuk/$1';
 $route['hapus-barang-masuk/(:any)/(:any)']			= 'Item/hapus_barang_masuk/$1/$2';
+$route['approve-barang-masuk/(:any)/(:any)']			= 'Item/approve_barang_masuk/$1/$2';
 
 $route['barang-keluar']					= 'Item/barang_keluar';
 $route['tambah-barang-keluar']			= 'Item/tambah_barang_keluar';
 $route['detail-barang-keluar/(:any)']			= 'Item/detail_barang_keluar/$1';
 $route['edit-barang-keluar/(:any)']			= 'Item/edit_barang_keluar/$1';
 $route['hapus-barang-keluar/(:any)/(:any)']			= 'Item/hapus_barang_keluar/$1/$2';
+$route['approve-barang-keluar/(:any)/(:any)']			= 'Item/approve_barang_keluar/$1/$2';
 
 $route['maintenance-hardware'] 				    = 'Maintenance';
 $route['tambah-maintenance-hardware'] 	        = 'Maintenance/tambah';

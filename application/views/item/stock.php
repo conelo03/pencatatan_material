@@ -6,7 +6,7 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Laporan Barang Keluar</a></div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Gudang</a></div>
       </div>
     </div>
 
@@ -15,12 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Laporan Barang Keluar</h4>
-              <div class="card-header-action">
-                <?php if(is_pegawai()):?>
-                <a href="<?= base_url('cetak-barang-keluar');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
-                <?php endif;?>
-              </div>
+              <h4>Stock Gudang</h4>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -28,23 +23,27 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
-                      <th>Kode</th>
-                      <th>Nama</th>
-                      <th>Tanggal Keluar</th>
-                      <th>Penerima</th>
+                      <th>Kode Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Lokasi</th>
+                      <th>Stock</th>
+                      <th class="text-center" style="width: 250px;">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                     $no = 1; 
-                    foreach($barang_keluar as $u):
+                    foreach($item as $u):
                     ?>
                     <tr>
                       <td class="text-center"><?= $no++;?></td>
                       <td><?= $u['kode_item'];?></td>
                       <td><?= $u['nama_item'];?></td>
-                      <td><?= $u['tgl_keluar'];?></td>
-                      <td><?= $u['penerima'];?></td>
+                      <td><?= $u['lokasi'];?></td>
+                      <td><?= $u['stok'];?></td>
+                      <td class="text-center">
+                        <a href="<?= base_url('barcode-stock/'.$u['kode_item']);?>" class="btn btn-light"><i class="fa fa-barcode"></i></a>
+                      </td>
                     </tr>
                     <?php endforeach;?>
                   </tbody>

@@ -16,7 +16,7 @@
           <div class="card">
             <div class="card-header">
               <h4>Data Permintaan Barang</h4>
-              <?php if (is_keuangan()) { ?>
+              <?php if (is_outsourcing()) { ?>
                 <div class="card-header-action">
                   <a href="<?= base_url('tambah-permintaan-barang');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                 </div>
@@ -55,14 +55,14 @@
                       <td>
                         <?php
                           if ($u['status'] == 0) {
-                            echo '<button class="btn btn-danger">Belum Diproses</button>';
+                            echo '<button class="btn btn-danger">Belum Tersedia</button>';
                           } else {
-                            echo '<button class="btn btn-success">Sudah Diproses</button>';
+                            echo '<button class="btn btn-success">Sudah Tersedia</button>';
                           }
                         ?>
                       </td>
                       <td class="text-center">
-                      <?php if (is_keuangan() && $u['status'] == 0) { ?>
+                      <?php if (is_outsourcing() && $u['status'] == 0) { ?>
                         <a href="<?= base_url('edit-permintaan-barang/'.$u['id_permintaan_barang']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
                         <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-permintaan-barang/'.$u['id_permintaan_barang']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                       <?php } ?>

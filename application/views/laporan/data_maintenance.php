@@ -17,7 +17,7 @@
             <div class="card-header">
               <h4>Laporan Maintenance Hardware</h4>
               <div class="card-header-action">
-                <?php if(is_pegawai() || is_manager()):?>
+                <?php if(is_pegawai()):?>
                 <a href="<?= base_url('cetak-maintenance-hardware');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
                 <?php endif;?>
               </div>

@@ -8,11 +8,11 @@
     </div>
 
     <div class="section-header">
-      <h6>Selamat Datang di Aplikasi Pencatatan Barang<br/><br/>
+      <h6>Selamat Datang di Sistem Informasi Monitoring Barang<br/><br/>
       </h6>
 
     </div>
-    <?php if(!is_teknisi() && !is_manager()):?>
+    <?php if(is_admin() || is_pegawai()):?>
     <div class="row">
       <div class="col-lg-12">
         <div class="card">

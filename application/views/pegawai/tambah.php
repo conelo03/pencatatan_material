@@ -86,7 +86,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="akses" value="admin" id="exampleRadios3" <?= set_value('akses') == 'admin' ? 'checked' : '' ; ?> >
                     <label class="form-check-label" for="exampleRadios3">
-                      Administrator
+                      Pengawas / Administrator
                     </label>
                   </div>
                   <div class="form-check">
@@ -98,7 +98,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="akses" value="pegawai" id="exampleRadios4" <?= set_value('akses') == 'pegawai' ? 'checked' : '' ; ?> >
                     <label class="form-check-label" for="exampleRadios4">
-                      Pegawai
+                      Pegawai Administrasi
                     </label>
                   </div>
                   <div class="form-check">
@@ -108,15 +108,9 @@
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="akses" value="keuangan" id="exampleRadios4" <?= set_value('akses') == 'keuangan' ? 'checked' : '' ; ?> >
+                    <input class="form-check-input" type="radio" name="akses" value="outsourcing" id="exampleRadios4" <?= set_value('akses') == 'outsourcing' ? 'checked' : '' ; ?> >
                     <label class="form-check-label" for="exampleRadios4">
-                      Divisi Keuangan
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="akses" value="pelkap" id="exampleRadios4" <?= set_value('akses') == 'pelkap' ? 'checked' : '' ; ?> >
-                    <label class="form-check-label" for="exampleRadios4">
-                      Divisi Pelkap
+                      Pegawai Outsourcing
                     </label>
                   </div>
                 </div>

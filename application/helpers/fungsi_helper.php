@@ -56,14 +56,14 @@ function is_manager()
     return $status;
 }
 
-function is_keuangan()
+function is_outsourcing()
 {
     $ci = get_instance();
     $role = $ci->session->userdata('akses');
 
     $status = true;
 
-    if ($role != 'keuangan') {
+    if ($role != 'outsourcing') {
         $status = false;
     }
 

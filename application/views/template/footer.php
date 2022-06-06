@@ -29,7 +29,7 @@
 
   <!-- Page Specific JS File -->
   <script src="<?= base_url(); ?>assets/js/page/index-0.js"></script>
-  <?php if(!is_teknisi() && !is_manager()):?>
+  <?php if(is_admin() || is_pegawai()):?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript">
     var ctx = document.getElementById("barChart").getContext('2d');
@@ -240,6 +240,14 @@
       iziToast.success({
           title: 'Sukses!',
           message: 'Pembayaran berhasil!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
+  <?php elseif($this->session->flashdata('msg')=='approve'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Approval berhasil!',
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>

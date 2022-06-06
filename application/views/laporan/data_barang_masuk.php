@@ -17,7 +17,7 @@
             <div class="card-header">
               <h4>Laporan Barang Masuk</h4>
               <div class="card-header-action">
-                <?php if(is_pegawai() || is_manager()):?>
+                <?php if(is_pegawai()):?>
                 <a href="<?= base_url('cetak-barang-masuk');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
                 <?php endif;?>
               </div>

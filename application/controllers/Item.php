@@ -24,6 +24,13 @@ class Item extends CI_Controller {
 		$this->load->view('item/data', $data);
 	}
 
+	public function stock()
+	{
+        $data['title']		= 'Stock Gudang';
+		$data['item']		= $this->M_item->get_data()->result_array();
+		$this->load->view('item/stock', $data);
+	}
+
 	public function tambah()
 	{
 		$this->validation();
@@ -103,6 +110,13 @@ class Item extends CI_Controller {
 		$this->load->view('item/barcode', $data);
 	}
 
+	public function barcode_stock($kode_item)
+	{
+		$data['title']		= 'Stock Gudang';
+		$data['kode_item']	= $kode_item;
+		$this->load->view('item/barcode_stock', $data);
+	}
+
 	public function barcode_generator($kode_item)
 	{
 		$this->load->library('zend');
@@ -141,12 +155,6 @@ class Item extends CI_Controller {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('tambah-barang-masuk');
 			} else {
-				$item	= $this->M_item->get_by_id($data['id_item']);
-				$data_item	= [
-					'id_item'		=> $data['id_item'],
-					'stok'			=> $item['stok'] + $data['jumlah'],
-				];
-				$this->M_item->update($data_item);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-masuk');
 			}
@@ -175,11 +183,6 @@ class Item extends CI_Controller {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('edit-barang-masuk/'.$id_barang_masuk);
 			} else {
-				$data_item	= [
-					'id_item'		=> $data['id_item'],
-					'stok'			=> $item['stok'] + $data['jumlah'] - $jumlah_old,
-				];
-				$this->M_item->update($data_item);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-masuk');
 			}
@@ -199,14 +202,26 @@ class Item extends CI_Controller {
 	public function hapus_barang_masuk($id_barang_masuk, $id_item)
 	{
 		$bm = $this->M_barang_masuk->get_by_id($id_barang_masuk);
+		$this->M_barang_masuk->delete($id_barang_masuk);
+		$this->session->set_flashdata('msg', 'hapus');
+		redirect('barang-masuk');
+	}
+
+	public function approve_barang_masuk($id_barang_masuk, $id_item)
+	{
+		$bm = $this->M_barang_masuk->get_by_id($id_barang_masuk);
 		$item	= $this->M_item->get_by_id($id_item);
 		$data_item	= [
 			'id_item'		=> $item['id_item'],
-			'stok'			=> $item['stok'] - $bm['jumlah'],
+			'stok'			=> $item['stok'] + $bm['jumlah'],
 		];
 		$this->M_item->update($data_item);
-		$this->M_barang_masuk->delete($id_barang_masuk);
-		$this->session->set_flashdata('msg', 'hapus');
+		$data_item	= [
+			'id_barang_masuk'		=> $id_barang_masuk,
+			'approval'			=> 1,
+		];
+		$this->M_barang_masuk->update($data_item);
+		$this->session->set_flashdata('msg', 'approve');
 		redirect('barang-masuk');
 	}
 
@@ -237,21 +252,11 @@ class Item extends CI_Controller {
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
 			];
 
-			$item	= $this->M_item->get_by_id($data['id_item']);
-			if(($item['stok'] - $data['jumlah']) < 0 ){
-				$this->session->set_flashdata('msg', 'error-stock');
-				redirect('tambah-barang-keluar');
-			}
 			if ($this->M_barang_keluar->insert($data_user)) {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('tambah-barang-keluar');
 			} else {
-				
-				$data_item	= [
-					'id_item'		=> $data['id_item'],
-					'stok'			=> $item['stok'] - $data['jumlah'],
-				];
-				$this->M_item->update($data_item);
+
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-keluar');
 			}
@@ -276,19 +281,12 @@ class Item extends CI_Controller {
 				'jumlah'			=> $data['jumlah'],
 				'keterangan'			=> $data['keterangan'],
 			];
-			if(($item['stok'] - $data['jumlah'] + $jumlah_old) < 0 ){
-				$this->session->set_flashdata('msg', 'error-stock');
-				redirect('edit-barang-keluar/'.$id_barang_keluar);
-			}
+
 			if ($this->M_barang_keluar->update($data_user)) {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('edit-barang-keluar/'.$id_barang_keluar);
 			} else {
-				$data_item	= [
-					'id_item'		=> $data['id_item'],
-					'stok'			=> $item['stok'] - $data['jumlah'] + $jumlah_old,
-				];
-				$this->M_item->update($data_item);
+
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-keluar');
 			}
@@ -316,6 +314,24 @@ class Item extends CI_Controller {
 		$this->M_item->update($data_item);
 		$this->M_barang_keluar->delete($id_barang_keluar);
 		$this->session->set_flashdata('msg', 'hapus');
+		redirect('barang-keluar');
+	}
+
+	public function approve_barang_keluar($id_barang_keluar, $id_item)
+	{
+		$bk = $this->M_barang_keluar->get_by_id($id_barang_keluar);
+		$item	= $this->M_item->get_by_id($id_item);
+		$data_item	= [
+			'id_item'		=> $item['id_item'],
+			'stok'			=> $item['stok'] - $bk['jumlah'],
+		];
+		$this->M_item->update($data_item);
+		$data_item	= [
+			'id_barang_keluar'		=> $id_barang_keluar,
+			'approval'			=> 1,
+		];
+		$this->M_barang_keluar->update($data_item);
+		$this->session->set_flashdata('msg', 'approve');
 		redirect('barang-keluar');
 	}
 
