@@ -99,15 +99,18 @@ $route['edit-maintenance-hardware/(:any)'] 	    = 'Maintenance/edit/$1';
 $route['hapus-maintenance-hardware/(:any)']    	= 'Maintenance/hapus/$1';
 $route['repair-maintenance-hardware/(:any)'] 		= 'Maintenance/repair/$1';
 
+$route['laporan-stock-gudang']					= 'Laporan/stock_gudang';
 $route['laporan-barang-masuk']					= 'Laporan/barang_masuk';
 $route['laporan-barang-keluar']					= 'Laporan/barang_keluar';
 $route['laporan-maintenance-hardware'] 				    = 'Laporan/maintenance';
+$route['cetak-stock-gudang']					= 'Laporan/cetak_stock_gudang';
 $route['cetak-barang-masuk']					= 'Laporan/cetak_barang_masuk';
 $route['cetak-barang-keluar']					= 'Laporan/cetak_barang_keluar';
 $route['cetak-maintenance-hardware'] 				    = 'Laporan/cetak_maintenance';
 
 $route['permintaan-barang'] 				    = 'Permintaan_barang';
 $route['tambah-permintaan-barang'] 	        = 'Permintaan_barang/tambah';
+$route['tambah-permintaan-barang/(:any)'] 	        = 'Permintaan_barang/tambah/$1';
 $route['edit-permintaan-barang/(:any)'] 	    = 'Permintaan_barang/edit/$1';
 $route['hapus-permintaan-barang/(:any)']    	= 'Permintaan_barang/hapus/$1';
 $route['verifikasi-permintaan-barang/(:any)'] 		= 'Permintaan_barang/verifikasi/$1';

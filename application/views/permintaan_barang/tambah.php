@@ -35,7 +35,7 @@
                 <div class="row">
                   <div class="form-group col-6">
                     <label>Barcode</label>
-                    <input type="text" name="kode_item" class="form-control" id="search-input-kode-item" value="<?= set_value('kode_item'); ?>" required="">
+                    <input type="text" name="kode_item" class="form-control" id="search-input-kode-item" value="<?= set_value('kode_item', $item['kode_item']); ?>" required="">
                     <span class="text-danger" id='item-error'></span>
                     <?= form_error('kode_item', '<span class="text-danger small">', '</span>'); ?>
                   </div>
@@ -46,8 +46,8 @@
                 </div>
                 <div class="form-group">
                   <label>Nama Barang</label>
-                  <input type="hidden" name="id_item" class="form-control disabled" id="id_item">
-                  <input type="text" name="nama_item" class="form-control disabled" id="nama_item" value="<?= set_value('nama_item'); ?>" required="" disabled>
+                  <input type="hidden" name="id_item" class="form-control disabled" id="id_item" value="<?= $item['id_item'] ?>">
+                  <input type="text" name="nama_item" class="form-control disabled" id="nama_item" value="<?= set_value('nama_item', $item['nama_item']); ?>" required="" disabled>
                   <?= form_error('nama_item', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="row">

@@ -90,8 +90,12 @@ class Maintenance extends CI_Controller {
 
 	public function repair($id_maintenance)
 	{
+		$data = [
+			'tanggal_repair' => date('Y-m-d H:i:s'),
+			'status' => 1,
+		];
 		$this->db->where('id_maintenance', $id_maintenance);
-		$this->db->update('tb_maintenance', ['status' => 1]);
+		$this->db->update('tb_maintenance', $data);
 		$this->session->set_flashdata('msg', 'edit');
 		redirect('maintenance-hardware');
 	}

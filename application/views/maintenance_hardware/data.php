@@ -34,6 +34,7 @@
                       <th>Kode Barang</th>
                       <th>Nama Barang</th>
                       <th>Keterangan</th>
+                      <th>Tanggal Repair</th>
                       <th>Status</th>
                       <th class="text-center" style="width: 250px;">Aksi</th>
                     </tr>
@@ -50,6 +51,7 @@
                       <td><?= $u['kode_item'];?></td>
                       <td><?= $u['nama_item'];?></td>
                       <td><?= $u['keterangan'];?></td>
+                      <td><?= $u['tanggal_repair'];?></td>
                       <td>
                         <?php
                           if ($u['status'] == 0) {

@@ -97,13 +97,7 @@
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="akses" value="pegawai" id="exampleRadios4" <?= set_value('akses', $pegawai['akses']) == 'pegawai' ? 'checked' : '' ; ?> >
-                    <label class="form-check-label" for="exampleRadios4">
-                      Pegawai Administrasi
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" name="akses" value="teknisi" id="exampleRadios4" <?= set_value('akses', $pegawai['akses']) == 'pegawai' ? 'checked' : '' ; ?> >
+                    <input class="form-check-input" type="radio" name="akses" value="teknisi" id="exampleRadios4" <?= set_value('akses', $pegawai['akses']) == 'teknisi' ? 'checked' : '' ; ?> >
                     <label class="form-check-label" for="exampleRadios4">
                       Teknisi
                     </label>

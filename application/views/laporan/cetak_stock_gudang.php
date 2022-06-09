@@ -12,44 +12,29 @@
   </head>
   <body>
     <div class="container-fluid">
-      <h2 class="text-center">Laporan Maintenance Hardware</h2>
+      <h2 class="text-center">Laporan Stock Gudang</h2>
       <br>
       <table class="table table-bordered" id="datatables-user">
         <thead>
           <tr>
             <th class="text-center">#</th>
-            <th>Tanggal</th>
-            <th>User</th>
-            <th>Kode Item</th>
-            <th>Nama Item</th>
-            <th>Keterangan</th>
-            <th>Tanggal Repair</th>
-            <th>Status</th>
+            <th>Kode Barang</th>
+            <th>Nama Barang</th>
+            <th>Lokasi</th>
+            <th>Stock</th>
           </tr>
         </thead>
         <tbody>
           <?php
           $no = 1; 
-          foreach($maintenance_hardware as $u):
+          foreach($item as $u):
           ?>
           <tr>
             <td class="text-center"><?= $no++;?></td>
-            <td><?= $u['tanggal'];?></td>
-            <td><?= $u['nama'];?></td>
             <td><?= $u['kode_item'];?></td>
             <td><?= $u['nama_item'];?></td>
-            <td><?= $u['keterangan'];?></td>
-            <td><?= $u['tanggal_repair'];?></td>
-            <td>
-              <?php
-                if ($u['status'] == 0) {
-                  echo 'Belum Dikerjakan';
-                } else {
-                  echo 'Sudah Dikerjakan';
-                }
-              ?>
-              
-            </td>
+            <td><?= $u['lokasi'];?></td>
+            <td><?= $u['stok'];?></td>
           </tr>
           <?php endforeach;?>
         </tbody>

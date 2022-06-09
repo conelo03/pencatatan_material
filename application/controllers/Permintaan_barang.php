@@ -24,11 +24,12 @@ class Permintaan_barang extends CI_Controller {
 		$this->load->view('permintaan_barang/data', $data);
 	}
 
-	public function tambah()
+	public function tambah($id_item = null)
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Permintaan Barang';
+			$data['item']	= $this->M_item->get_by_id($id_item);
 			$this->load->view('permintaan_barang/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
@@ -42,10 +43,10 @@ class Permintaan_barang extends CI_Controller {
 			];
 			if ($this->M_permintaan_barang->insert($data_user)) {
 				$this->session->set_flashdata('msg', 'error');
-				redirect('tambah-permintaan-barang');
+				redirect('tambah-permintaan-barang/'.$id_item);
 			} else {
 				$this->session->set_flashdata('msg', 'success');
-				redirect('permintaan-barang');
+				redirect('item');
 			}
 		}
 	}
@@ -93,8 +94,16 @@ class Permintaan_barang extends CI_Controller {
 
 	public function verifikasi($id_permintaan_barang)
 	{
+		$pb = $this->M_permintaan_barang->get_by_id($id_permintaan_barang);
+		$item = $this->M_item->get_by_id($pb['id_item']);
+		$sisa = $item['stok'] - $pb['jumlah'];
+		$data_item	= [
+			'id_item'		=> $item['id_item'],
+			'stok'			=> $item['stok'] - $pb['jumlah'],
+		];
+		$this->M_item->update($data_item);
 		$this->db->where('id_permintaan_barang', $id_permintaan_barang);
-		$this->db->update('tb_permintaan_barang', ['status' => 1]);
+		$this->db->update('tb_permintaan_barang', ['status' => 1, 'stock' => $sisa]);
 		$this->session->set_flashdata('msg', 'edit');
 		redirect('permintaan-barang');
 	}

@@ -17,9 +17,9 @@
             <div class="card-header">
               <h4>Laporan Barang Keluar</h4>
               <div class="card-header-action">
-                <?php if(is_pegawai()):?>
+                
                 <a href="<?= base_url('cetak-barang-keluar');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
-                <?php endif;?>
+                
               </div>
             </div>
             <div class="card-body">
@@ -28,9 +28,10 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
+                      <th>Tanggal Keluar</th>
                       <th>Kode</th>
                       <th>Nama</th>
-                      <th>Tanggal Keluar</th>
+                      <th>Jumlah</th>
                       <th>Penerima</th>
                     </tr>
                   </thead>
@@ -41,10 +42,11 @@
                     ?>
                     <tr>
                       <td class="text-center"><?= $no++;?></td>
+                      <td><?= $u['tanggal'];?></td>
                       <td><?= $u['kode_item'];?></td>
                       <td><?= $u['nama_item'];?></td>
-                      <td><?= $u['tgl_keluar'];?></td>
-                      <td><?= $u['penerima'];?></td>
+                      <td><?= $u['jumlah'];?></td>
+                      <td><?= $u['nama'];?></td>
                     </tr>
                     <?php endforeach;?>
                   </tbody>

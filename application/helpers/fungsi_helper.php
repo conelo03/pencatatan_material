@@ -21,7 +21,7 @@ function is_pegawai()
 
     $status = true;
 
-    if ($role != 'pegawai') {
+    if ($role != 'admin') {
         $status = false;
     }
 

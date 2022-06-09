@@ -6,7 +6,7 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Laporan Barang Masuk</a></div>
+        <div class="breadcrumb-item active"><a href="#">Laporan Stock Gudang</a></div>
       </div>
     </div>
 
@@ -15,10 +15,10 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Laporan Barang Masuk</h4>
+              <h4>Laporan Stock Gudang</h4>
               <div class="card-header-action">
                 
-                <a href="<?= base_url('cetak-barang-masuk');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
+                <a href="<?= base_url('cetak-stock-gudang');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
                 
               </div>
             </div>
@@ -28,23 +28,23 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
-                      <th>Kode</th>
-                      <th>Nama</th>
-                      <th>Tanggal Masuk</th>
-                      <th>Jumlah</th>
+                      <th>Kode Barang</th>
+                      <th>Nama Barang</th>
+                      <th>Lokasi</th>
+                      <th>Stock</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
                     $no = 1; 
-                    foreach($barang_masuk as $u):
+                    foreach($item as $u):
                     ?>
                     <tr>
                       <td class="text-center"><?= $no++;?></td>
                       <td><?= $u['kode_item'];?></td>
                       <td><?= $u['nama_item'];?></td>
-                      <td><?= $u['tgl_masuk'];?></td>
-                      <td><?= $u['jumlah'];?></td>
+                      <td><?= $u['lokasi'];?></td>
+                      <td><?= $u['stok'];?></td>
                     </tr>
                     <?php endforeach;?>
                   </tbody>

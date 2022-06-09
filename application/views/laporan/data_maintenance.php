@@ -17,9 +17,9 @@
             <div class="card-header">
               <h4>Laporan Maintenance Hardware</h4>
               <div class="card-header-action">
-                <?php if(is_pegawai()):?>
+                
                 <a href="<?= base_url('cetak-maintenance-hardware');?>" target="_blank" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
-                <?php endif;?>
+                
               </div>
               
             </div>
@@ -34,6 +34,7 @@
                       <th>Kode Item</th>
                       <th>Nama Item</th>
                       <th>Keterangan</th>
+                      <th>Tanggal Repair</th>
                       <th>Status</th>
                     </tr>
                   </thead>
@@ -49,6 +50,7 @@
                       <td><?= $u['kode_item'];?></td>
                       <td><?= $u['nama_item'];?></td>
                       <td><?= $u['keterangan'];?></td>
+                      <td><?= $u['tanggal_repair'];?></td>
                       <td>
                         <?php
                           if ($u['status'] == 0) {

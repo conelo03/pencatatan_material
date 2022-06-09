@@ -15,11 +15,11 @@ class Item extends CI_Controller {
 		$this->load->library('upload');
 	}
 
-	// Data Barang
+	// Stock Gudang
 
 	public function index()
 	{
-        $data['title']		= 'Data Barang';
+        $data['title']		= 'Stock Gudang';
 		$data['item']		= $this->M_item->get_data()->result_array();
 		$this->load->view('item/data', $data);
 	}
@@ -35,7 +35,7 @@ class Item extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Barang';
+			$data['title']		= 'Stock Gudang';
 			$data['kategori']	= $this->M_kategori->get_data()->result_array();
 			$this->load->view('item/tambah', $data);
 		} else {
@@ -61,7 +61,7 @@ class Item extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Barang';
+			$data['title']		= 'Stock Gudang';
 			$data['item']	= $this->M_item->get_by_id($id_item);
 			$data['kategori']	= $this->M_kategori->get_data()->result_array();
 			$this->load->view('item/edit', $data);
@@ -92,7 +92,6 @@ class Item extends CI_Controller {
 		$this->form_validation->set_rules('nama_item', 'Nama Item', 'required|trim');
 		$this->form_validation->set_rules('id_kategori', 'Kategori', 'required|trim');
 		$this->form_validation->set_rules('lokasi', 'Lokasi Item', 'required|trim');
-		$this->form_validation->set_rules('stok', 'Stok Item', 'required|trim');
 		
 	}
 
@@ -105,7 +104,7 @@ class Item extends CI_Controller {
 
 	public function barcode($kode_item)
 	{
-		$data['title']		= 'Data Barang';
+		$data['title']		= 'Stock Gudang';
 		$data['kode_item']	= $kode_item;
 		$this->load->view('item/barcode', $data);
 	}
@@ -155,6 +154,12 @@ class Item extends CI_Controller {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('tambah-barang-masuk');
 			} else {
+				$item	= $this->M_item->get_by_id($data['id_item']);
+				$data_item	= [
+					'id_item'		=> $item['id_item'],
+					'stok'			=> $item['stok'] + $data['jumlah'],
+				];
+				$this->M_item->update($data_item);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-masuk');
 			}
@@ -183,6 +188,11 @@ class Item extends CI_Controller {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('edit-barang-masuk/'.$id_barang_masuk);
 			} else {
+				$data_item	= [
+					'id_item'		=> $item['id_item'],
+					'stok'			=> $item['stok'] - $jumlah_old + $data['jumlah'],
+				];
+				$this->M_item->update($data_item);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-masuk');
 			}
@@ -202,6 +212,12 @@ class Item extends CI_Controller {
 	public function hapus_barang_masuk($id_barang_masuk, $id_item)
 	{
 		$bm = $this->M_barang_masuk->get_by_id($id_barang_masuk);
+		$item	= $this->M_item->get_by_id($id_item);
+		$data_item	= [
+			'id_item'		=> $item['id_item'],
+			'stok'			=> $item['stok'] - $bm['jumlah'],
+		];
+		$this->M_item->update($data_item);
 		$this->M_barang_masuk->delete($id_barang_masuk);
 		$this->session->set_flashdata('msg', 'hapus');
 		redirect('barang-masuk');
@@ -251,12 +267,21 @@ class Item extends CI_Controller {
 				'penerima'			=> $data['penerima'],
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
 			];
+			$item	= $this->M_item->get_by_id($data['id_item']);
+			if($item['stok'] < $data['jumlah']){
+				$this->session->set_flashdata('msg', 'error-stock');
+				redirect('barang-keluar');
+			}	
 
 			if ($this->M_barang_keluar->insert($data_user)) {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('tambah-barang-keluar');
 			} else {
-
+				$data_item	= [
+					'id_item'		=> $item['id_item'],
+					'stok'			=> $item['stok'] - $data['jumlah'],
+				];
+				$this->M_item->update($data_item);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-keluar');
 			}
@@ -282,11 +307,20 @@ class Item extends CI_Controller {
 				'keterangan'			=> $data['keterangan'],
 			];
 
+			if(($item['stok'] + $jumlah_old) < $data['jumlah']){
+				$this->session->set_flashdata('msg', 'error-stock');
+				redirect('barang-keluar');
+			}	
+
 			if ($this->M_barang_keluar->update($data_user)) {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('edit-barang-keluar/'.$id_barang_keluar);
 			} else {
-
+				$data_item	= [
+					'id_item'		=> $item['id_item'],
+					'stok'			=> $item['stok'] + $jumlah_old - $data['jumlah'],
+				];
+				$this->M_item->update($data_item);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('barang-keluar');
 			}

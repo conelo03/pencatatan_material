@@ -32,46 +32,19 @@
   <?php if(is_admin() || is_pegawai()):?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="text/javascript">
-    var ctx = document.getElementById("barChart").getContext('2d');
+    var ctx = document.getElementById("stockChart").getContext('2d');
     const mChart = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
-        labels: <?= $bulan_masuk ?>,
+        labels: <?= $nama ?>,
         datasets: [{
-          label: 'Barang Masuk',
-          data: <?= $jumlah_masuk ?>,
+          label: 'Stock Gudang',
+          data: <?= $stok ?>,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
           ],
           borderColor: [
             'rgba(255, 99, 132, 1)',
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    var ctx = document.getElementById("keluarChart").getContext('2d');
-    const kChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: <?= $bulan_keluar ?>,
-        datasets: [
-        {
-          label: 'Barang Keluar',
-          data: <?= $jumlah_keluar ?>,
-          backgroundColor: [
-            'rgba(54, 162, 235, 0.2)',
-          ],
-          borderColor: [
-            'rgba(54, 162, 235, 1)',
           ],
           borderWidth: 1
         }]

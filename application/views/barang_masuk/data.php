@@ -32,7 +32,6 @@
                       <th>Nama</th>
                       <th>Tanggal Masuk</th>
                       <th>Jumlah</th>
-                      <th>Approval</th>
                       <th class="text-center" style="width: 250px;">Aksi</th>
                     </tr>
                   </thead>
@@ -47,22 +46,9 @@
                       <td><?= $u['nama_item'];?></td>
                       <td><?= $u['tgl_masuk'];?></td>
                       <td><?= $u['jumlah'];?></td>
-                      <td>
-                        <?php
-                          if ($u['approval'] == 0) {
-                            echo '<button class="btn btn-danger">Belum Approve</button>';
-                          } else {
-                            echo '<button class="btn btn-success">Approve</button>';
-                          }
-                        ?>
-                        
-                      </td>
                       <td class="text-center">
                         <a href="<?= base_url('detail-barang-masuk/'.$u['id_barang_masuk']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
-                        <?php if(is_admin() && $u['approval'] == 0):?> 
-                        <button class="btn btn-success" data-confirm="Anda yakin ingin menyetujui data ini?|Data yang sudah disetujui tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('approve-barang-masuk/'.$u['id_barang_masuk'].'/'.$u['id_item']); ?>';"><i class="fa fa-check"></i> Approve</button>
-                        <?php endif;?>
-                        <?php if(is_pegawai() && $u['approval'] == 0):?> 
+                        <?php if(is_pegawai()):?> 
                         <a href="<?= base_url('edit-barang-masuk/'.$u['id_barang_masuk']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
                         <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-barang-masuk/'.$u['id_barang_masuk'].'/'.$u['id_item']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                         <?php endif;?>

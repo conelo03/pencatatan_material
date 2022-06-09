@@ -21,10 +21,17 @@ class Laporan extends CI_Controller {
 		$this->load->view('laporan/data_barang_masuk', $data);
 	}
 
+	public function stock_gudang()
+	{
+		$data['title']	= 'Laporan Stock Gudang';
+		$data['item']		= $this->M_item->get_data()->result_array();
+		$this->load->view('laporan/data_stock_gudang', $data);
+	}
+
 	public function barang_keluar()
 	{
 		$data['title']	= 'Laporan Barang Keluar';
-		$data['barang_keluar']		= $this->M_barang_keluar->get_data()->result_array();
+		$data['barang_keluar']		= $this->M_permintaan_barang->get_data()->result_array();
 		$this->load->view('laporan/data_barang_keluar', $data);
 	}
 
@@ -42,10 +49,17 @@ class Laporan extends CI_Controller {
 		$this->load->view('laporan/cetak_barang_masuk', $data);
 	}
 
+	public function cetak_stock_gudang()
+	{
+		$data['title']	= 'Cetak Stock gudang';
+		$data['item']		= $this->M_item->get_data()->result_array();
+		$this->load->view('laporan/cetak_stock_gudang', $data);
+	}
+
 	public function cetak_barang_keluar()
 	{
 		$data['title']	= 'Cetak Barang Keluar';
-		$data['barang_keluar']		= $this->M_barang_keluar->get_data()->result_array();
+		$data['barang_keluar']		= $this->M_permintaan_barang->get_data()->result_array();
 		$this->load->view('laporan/cetak_barang_keluar', $data);
 	}
 

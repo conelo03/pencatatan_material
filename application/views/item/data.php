@@ -16,9 +16,12 @@
           <div class="card">
             <div class="card-header">
               <h4>Data Barang</h4>
-              <div class="card-header-action">
-                <a href="<?= base_url('tambah-item');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
-              </div>
+              <?php if (is_admin()) { ?>
+                <div class="card-header-action">
+                  <a href="<?= base_url('tambah-item');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                </div>
+              <?php } ?>
+              
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -46,8 +49,13 @@
                       <td><?= $u['stok'];?></td>
                       <td class="text-center">
                         <a href="<?= base_url('barcode/'.$u['kode_item']);?>" class="btn btn-light"><i class="fa fa-barcode"></i></a>
-                        <a href="<?= base_url('edit-item/'.$u['id_item']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
-                        <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-item/'.$u['id_item']); ?>';"><i class="fa fa-trash"></i> Delete</button>
+                        <?php if (is_admin()) { ?>
+                          <a href="<?= base_url('edit-item/'.$u['id_item']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                          <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-item/'.$u['id_item']); ?>';"><i class="fa fa-trash"></i> Delete</button>
+                        <?php } ?>
+                        <?php if (is_outsourcing()) { ?>
+                          <a href="<?= base_url('tambah-permintaan-barang/'.$u['id_item']);?>" class="btn btn-info"><i class="fa fa-plus"></i> Minta Barang</a>
+                        <?php } ?>
                       </td>
                     </tr>
                     <?php endforeach;?>

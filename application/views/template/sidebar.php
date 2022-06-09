@@ -40,41 +40,26 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             <li class="<?= $title == 'Dashboard' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('dashboard');?>"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>  
 
             <li class="<?= $title == 'Profil Pribadi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('profile');?>"><i class="fas fa-user"></i> <span>Profil Pribadi</span></a></li> 
-            
-            <?php if(is_admin()):?>
-              <li class="<?= $title == 'Data Pegawai' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pegawai');?>"><i class="fas fa-users"></i> <span>Data Pegawai</span></a></li> 
-              <li class="menu-header">Data Gudang</li>
-              <li class="<?= $title == 'Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('stock-item');?>"><i class="fas fa-th-large"></i> <span>Stock Gudang</span></a></li> 
-            
-              <li class="menu-header">Transaksi</li>
-              
-              <li class="<?= $title == 'Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-masuk');?>"><i class="fas fa-download"></i> <span>Barang Masuk</span></a></li> 
-              <li class="<?= $title == 'Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-keluar');?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li>
-            
-              <li class="menu-header">Pelaporan</li>
-              <li class="<?= $title == 'Laporan Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-masuk');?>"><i class="fas fa-file"></i> <span>Laporan Barang Masuk</span></a></li> 
-              <li class="<?= $title == 'Laporan Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-keluar');?>"><i class="fas fa-file"></i> <span>Laporan Barang Keluar</span></a></li>
-              <li class="<?= $title == 'Laporan Maintenance Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-maintenance-hardware');?>"><i class="fas fa-file"></i> <span>Laporan Maintenance Hardware</span></a></li>
-            <?php endif;?>
-
 
             <?php if(is_pegawai()):?>
+              <li class="<?= $title == 'Data Pegawai' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pegawai');?>"><i class="fas fa-users"></i> <span>Data Pegawai</span></a></li> 
               <li class="<?= $title == 'Data Kategori' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('kategori');?>"><i class="fas fa-list"></i> <span>Data Kategori</span></a></li> 
-              <li class="<?= $title == 'Data Barang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('item');?>"><i class="fas fa-th-large"></i> <span>Data Barang</span></a></li> 
+              
 
               <li class="menu-header">Data Gudang</li>
-              <li class="<?= $title == 'Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('stock-item');?>"><i class="fas fa-th-large"></i> <span>Stock Gudang</span></a></li> 
+              <li class="<?= $title == 'Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('item');?>"><i class="fas fa-th-large"></i> <span>Stock Gudang</span></a></li> 
               <li class="<?= $title == 'Permintaan Barang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('permintaan-barang');?>"><i class="fas fa-clipboard-list"></i> <span>Permintaan Barang</span></a></li>
 
-              <li class="menu-header">Transaksi</li>
+              <!-- <li class="menu-header">Transaksi</li> -->
               
               <li class="<?= $title == 'Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-masuk');?>"><i class="fas fa-download"></i> <span>Barang Masuk</span></a></li> 
-              <li class="<?= $title == 'Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-keluar');?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li>
+              <!-- <li class="<?= $title == 'Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('barang-keluar');?>"><i class="fas fa-upload"></i> <span>Barang Keluar</span></a></li> -->
 
               <li class="menu-header">Maintenance Barang</li>
               <li class="<?= $title == 'Maintenance Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('maintenance-hardware');?>"><i class="fas fa-wrench"></i> <span>Maintenance Hardware</span></a></li> 
             
               <li class="menu-header">Pelaporan</li>
+              <li class="<?= $title == 'Laporan Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-stock-gudang');?>"><i class="fas fa-file"></i> <span>Laporan Stock Gudang</span></a></li> 
               <li class="<?= $title == 'Laporan Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-masuk');?>"><i class="fas fa-file"></i> <span>Laporan Barang Masuk</span></a></li> 
               <li class="<?= $title == 'Laporan Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-keluar');?>"><i class="fas fa-file"></i> <span>Laporan Barang Keluar</span></a></li>
               <li class="<?= $title == 'Laporan Maintenance Hardware' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-maintenance-hardware');?>"><i class="fas fa-file"></i> <span>Laporan Maintenance Hardware</span></a></li>
@@ -82,12 +67,9 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             
             <?php if(is_outsourcing()):?> 
               <li class="menu-header">Data Gudang</li>
-              <li class="<?= $title == 'Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('stock-item');?>"><i class="fas fa-th-large"></i> <span>Stock Gudang</span></a></li> 
-              <li class="<?= $title == 'Permintaan Barang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('permintaan-barang');?>"><i class="fas fa-clipboard-list"></i> <span>Permintaan Barang</span></a></li>
+              <li class="<?= $title == 'Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('item');?>"><i class="fas fa-th-large"></i> <span>Stock Gudang</span></a></li> 
+              <!-- <li class="<?= $title == 'Permintaan Barang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('permintaan-barang');?>"><i class="fas fa-clipboard-list"></i> <span>Permintaan Barang</span></a></li> -->
 
-              <li class="menu-header">Pelaporan</li>
-              <li class="<?= $title == 'Laporan Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-masuk');?>"><i class="fas fa-file"></i> <span>Laporan Barang Masuk</span></a></li> 
-              <li class="<?= $title == 'Laporan Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-keluar');?>"><i class="fas fa-file"></i> <span>Laporan Barang Keluar</span></a></li>
             <?php endif;?>
 
             <?php if(is_teknisi()):?>
@@ -98,6 +80,7 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
 
             <?php if(is_manager()):?> 
               <li class="menu-header">Pelaporan</li>
+              <li class="<?= $title == 'Laporan Stock Gudang' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-stock-gudang');?>"><i class="fas fa-file"></i> <span>Laporan Stock Gudang</span></a></li> 
               <li class="<?= $title == 'Laporan Barang Masuk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-masuk');?>"><i class="fas fa-file"></i> <span>Laporan Barang Masuk</span></a></li> 
               <li class="<?= $title == 'Laporan Barang Keluar' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-barang-keluar');?>"><i class="fas fa-file"></i> <span>Laporan Barang Keluar</span></a></li>
             <?php endif;?>

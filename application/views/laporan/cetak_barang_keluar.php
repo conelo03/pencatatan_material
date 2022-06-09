@@ -18,9 +18,10 @@
         <thead>
           <tr>
             <th class="text-center">#</th>
+            <th>Tanggal Keluar</th>
             <th>Kode</th>
             <th>Nama</th>
-            <th>Tanggal Keluar</th>
+            <th>Jumlah</th>
             <th>Penerima</th>
           </tr>
         </thead>
@@ -31,10 +32,11 @@
           ?>
           <tr>
             <td class="text-center"><?= $no++;?></td>
+            <td><?= $u['tanggal'];?></td>
             <td><?= $u['kode_item'];?></td>
             <td><?= $u['nama_item'];?></td>
-            <td><?= $u['tgl_keluar'];?></td>
-            <td><?= $u['penerima'];?></td>
+            <td><?= $u['jumlah'];?></td>
+            <td><?= $u['nama'];?></td>
           </tr>
           <?php endforeach;?>
         </tbody>

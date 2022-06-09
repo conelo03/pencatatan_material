@@ -18,7 +18,7 @@
               <h4>Data Permintaan Barang</h4>
               <?php if (is_outsourcing()) { ?>
                 <div class="card-header-action">
-                  <a href="<?= base_url('tambah-permintaan-barang');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                  <a href="<?= base_url('tambah-permintaan-barang');?>" class="btn btn-info"><i class="fa fa-plus"></i> Minta Barang</a>
                 </div>
               <?php } ?>
               
@@ -34,6 +34,7 @@
                       <th>Kode Barang</th>
                       <th>Nama Barang</th>
                       <th>Jumlah</th>
+                      <th>Stock</th>
                       <th>Keterangan</th>
                       <th>Status</th>
                       <th class="text-center" style="width: 250px;">Aksi</th>
@@ -51,13 +52,14 @@
                       <td><?= $u['kode_item'];?></td>
                       <td><?= $u['nama_item'];?></td>
                       <td><?= $u['jumlah'];?></td>
+                      <td><?= $u['stock'];?></td>
                       <td><?= $u['keterangan'];?></td>
                       <td>
                         <?php
                           if ($u['status'] == 0) {
-                            echo '<button class="btn btn-danger">Belum Tersedia</button>';
+                            echo '<button class="btn btn-danger">Belum Diapprove</button>';
                           } else {
-                            echo '<button class="btn btn-success">Sudah Tersedia</button>';
+                            echo '<button class="btn btn-success">Approve</button>';
                           }
                         ?>
                       </td>
@@ -67,7 +69,7 @@
                         <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-permintaan-barang/'.$u['id_permintaan_barang']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                       <?php } ?>
                       <?php if (is_pegawai() && $u['status'] == 0) { ?>
-                        <button class="btn btn-info" data-confirm="Anda yakin ingin memverifikasi permintaan barang ini?|Data yang sudah diverifikasi tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('verifikasi-permintaan-barang/'.$u['id_permintaan_barang']); ?>';"><i class="fa fa-check"></i> Verifikasi</button>
+                        <button class="btn btn-info" data-confirm="Anda yakin ingin menyetujui permintaan barang ini?|Data yang sudah diapprove tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('verifikasi-permintaan-barang/'.$u['id_permintaan_barang']); ?>';"><i class="fa fa-check"></i> Approve</button>
                       <?php } ?>
                       </td>
                     </tr>

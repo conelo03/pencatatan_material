@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group">
                   <label>Stock</label>
-                  <input type="number" name="stok" class="form-control" value="<?= set_value('stok'); ?>" required="">
+                  <input type="number" name="stok" class="form-control" value="<?= set_value('stok'); ?>" required>
                   <?= form_error('stok', '<span class="text-danger small">', '</span>'); ?>
                 </div>
               </div>
